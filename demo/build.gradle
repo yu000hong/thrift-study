@@ -1,0 +1,44 @@
+apply plugin: 'groovy'
+apply plugin: 'org.jruyi.thrift'
+apply plugin: 'application'
+
+buildscript {
+    repositories {
+        mavenCentral()
+        maven {
+            url 'https://plugins.gradle.org/m2/'
+        }
+    }
+    dependencies {
+        classpath 'gradle.plugin.org.jruyi.gradle:thrift-gradle-plugin:0.3.1'
+    }
+}
+
+dependencies {
+    compile project(':thrift')
+    compile 'org.codehaus.groovy:groovy-all:2.4.6'
+}
+
+sourceSets {
+    main {
+        java { srcDirs = [] }
+        groovy { srcDirs = ['src/main/java', 'src/main/groovy', 'src/generated/thrift/gen-java'] }
+    }
+}
+
+mainClassName = 'com.github.yu000hong.demo.thrift.CarServer'
+
+compileThrift {
+    recurse true
+    debug true
+
+    generator 'html'
+    generator 'java', 'private-members'
+    thriftExecutable '/usr/local/bin/thrift'
+    outputDir = file('src/generated/thrift')
+}
+
+clean << {
+    new File('src/generated/').deleteDir()
+}
+
