@@ -2,11 +2,15 @@
 
 ### 参考文档
 
+[官方文档](http://thrift.apache.org/docs/)
+
 [Thrift: The Missing Guide
 ](https://diwakergupta.github.io/thrift-missing-guide/)
 
 
 [Apache Thrift: A Much Needed Tutorial](http://digital-madness.in/blog/wp-content/uploads/2012/11/BSD_08_2013.8-18.pdf)
+
+[Apache Thrift](http://jnb.ociweb.com/jnb/jnbJun2009.html)
 
 ### 环境搭建
 
